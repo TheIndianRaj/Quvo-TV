@@ -174,37 +174,98 @@
             </div> -->
           </div>
           <!-- search form -->
-          <form action="#" method="get" class="sidebar-form">
+          <!-- <form action="#" method="get" class="sidebar-form">
             <div class="input-group">
               <input type="text" name="q" class="form-control" placeholder="Search...">
               <span class="input-group-btn">
                 <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i></button>
               </span>
             </div>
-          </form>
+          </form> -->
           <!-- /.search form -->
           <!-- sidebar menu: : style can be found in sidebar.less -->
           <ul class="sidebar-menu">
-            <li class="header">MAIN NAVIGATION</li>
+            <!-- <li class="header">MAIN NAVIGATION</li> -->
+            <li>
+              <a href="/">
+                <i class="fa fa-dashboard"></i> <span>Dashboard</span> 
+              </a>
+            </li>
             <li class="treeview">
               <a href="#">
-                <i class="fa fa-video-camera"></i> <span>Add Video</span> <i class="fa fa-angle-left pull-right"></i>
+                <i class="fa fa-video-camera"></i> <span>Videos</span> <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
-                <li><a href="new_bundle"><i class="fa fa-circle-o"></i> To New Bundle</a></li>
-                <li><a href="existing_bundle"><i class="fa fa-circle-o"></i> To Existing Bundle</a></li>
+                <li><a href="videos"><i class="fa fa-circle-o"></i>List Videos</a></li>
+                <li><a href="videos/add/main"><i class="fa fa-circle-o"></i>Add Main Video</a></li>
+                <li><a href="videos/add/related"><i class="fa fa-circle-o"></i>Add Related Video</a></li>
               </ul>
             </li>
-            <li>
-              <a href="add_team">
+            <li class="treeview">
+              <a href="#">
+                <i class="fa fa-users"></i> <span>Teams</span> <i class="fa fa-angle-left pull-right"></i>
+              </a>
+              <ul class="treeview-menu">
+                <li><a href="teams"><i class="fa fa-circle-o"></i>List Teams</a></li>
+                <li><a href="teams/add"><i class="fa fa-circle-o"></i>Add Team</a></li>
+              </ul>
+            </li>
+            <li class="treeview">
+              <a href="#">
+                <i class="fa fa-sort-numeric-asc"></i> <span>Series</span> <i class="fa fa-angle-left pull-right"></i>
+              </a>
+              <ul class="treeview-menu">
+                <li><a href="series"><i class="fa fa-circle-o"></i>List Series</a></li>
+                <li><a href="series/add"><i class="fa fa-circle-o"></i>Add Series</a></li>
+              </ul>
+            </li>
+            <li class="treeview">
+              <a href="#">
+                <i class="fa fa-gavel"></i> <span>Critics</span> <i class="fa fa-angle-left pull-right"></i>
+              </a>
+              <ul class="treeview-menu">
+                <li><a href="critics"><i class="fa fa-circle-o"></i>List Critics</a></li>
+                <li><a href="critics/add"><i class="fa fa-circle-o"></i>Add Critic</a></li>
+              </ul>
+            </li>
+            <li class="treeview">
+              <a href="#">
+                <i class="fa fa-cubes"></i> <span>Categories</span> <i class="fa fa-angle-left pull-right"></i>
+              </a>
+              <ul class="treeview-menu">
+                <li><a href="categories"><i class="fa fa-circle-o"></i>List Categories</a></li>
+                <li><a href="categories/add"><i class="fa fa-circle-o"></i>Add Category</a></li>
+              </ul>
+            </li>
+            <li class="treeview">
+              <a href="#">
+                <i class="fa fa-tasks"></i> <span>Genres</span> <i class="fa fa-angle-left pull-right"></i>
+              </a>
+              <ul class="treeview-menu">
+                <li><a href="genres"><i class="fa fa-circle-o"></i>List Genres</a></li>
+                <li><a href="genres/add"><i class="fa fa-circle-o"></i>Add Genre</a></li>
+              </ul>
+            </li>
+            <li class="treeview">
+              <a href="#">
+                <i class="fa fa-tags"></i> <span>Tags</span> <i class="fa fa-angle-left pull-right"></i>
+              </a>
+              <ul class="treeview-menu">
+                <li><a href="tags"><i class="fa fa-circle-o"></i>List Tags</a></li>
+                <li><a href="tags/add"><i class="fa fa-circle-o"></i>Add Tag</a></li>
+              </ul>
+            </li>
+            
+            <!-- <li>
+              <a href="addTeam">
                 <i class="fa fa-users"></i> <span>Add Team</span> 
               </a>
-            </li>
-            <li>
-              <a href="add_series">
+            </li> -->
+            <!--<li>
+              <a href="addSeries">
                 <i class="fa fa-sort-numeric-asc"></i> <span>Add Series</span> 
               </a>
-            </li>
+            </li> -->
             <!-- <li class="treeview">
               <a href="#">
                 <i class="fa fa-pie-chart"></i>
