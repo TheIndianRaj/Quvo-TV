@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  	<% include include/head %>
+    <link href="/dist/css/select2.min.css" rel="stylesheet" />
+    <script src="/dist/js/select2.min.js"></script>
+  </head>
+
+  <body class="hold-transition skin-blue fixed sidebar-mini" onload="videoDetailsForm.reset();">
+  	
+  	<% include include/sidebar %>
+
+  	<div style="min-height: 646px;" class="content-wrapper">
+      <form class="form-horizontal" id="videoDetailsForm">
+        <div class="box-body">
+          <div class="form-group">
+            <label for="inputType" class="col-sm-2 control-label">Type</label>
+            <div class="col-sm-6">
+              <select aria-hidden="true" tabindex="-1" class="form-control select2 select2-hidden-accessible" style="width: 20%;" id="video-type" autocomplete="off">
+                <!-- <option value='' selected>Select a type</option> -->
+                <option>Main</option>
+                <option>Promo</option>
+                <option>Trailer</option>
+                <option>Teaser</option>
+                <option>First Look</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group" id="main-video-titles">
+            <label for="inputAgeRestriction" class="col-sm-2 control-label">Main Video Title</label>
+            <div class="col-sm-8">
+              <select aria-hidden="true" tabindex="-1" class="form-control select2 main-video-title select2-hidden-accessible" multiple="" data-placeholder="Select the main video title" style="width: 100%;" autocomplete="off">
+                <option selected="selected">Title 1</option>
+                <option>Title 2</option>
+                <option>Title 3</option>
+                <option>Title 4</option>
+                <option>Title 5</option>
+              </select>
+            </div>
+          </div>        
+          <div class="form-group">
+            <label for="inputTitle" class="col-sm-2 control-label">Title</label>
+            <div class="col-sm-8 ">
+              <input class="form-control curve-edge" id="inputTitle" placeholder="Title" type="text" autocomplete="off">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="inputDescription" class="col-sm-2 control-label">Description</label>
+            <div class="col-sm-8">
+              <textarea class="form-control curve-edge" id="inputDescription" placeholder="Description" rows="3" autocomplete="off"></textarea>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="inputTeams" class="col-sm-2 control-label">Team</label>
+            <div class="col-sm-8">
+              <select aria-hidden="true" tabindex="-1" class="form-control select2 select2-hidden-accessible" style="width: 20%;" id="teams" autocomplete="off">
+                <option>TVF</option>
+                <option>Superwoman</option>
+                <option>EIC</option>
+                <option>ScreenPatti</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="inputArtists" class="col-sm-2 control-label">Artists</label>
+            <div class="col-sm-8">
+              <select aria-hidden="true" tabindex="-1" class="form-control select2 artists select2-hidden-accessible" multiple="" data-placeholder="Separate artists by commas" style="width: 100%;" autocomplete="off">
+                <option>Abish Mathew</option>
+                <option>Rohan Joshi</option>
+                <option>Biswapathi Sarkar</option>
+                <option>Khamba</option>
+                <option>Tanmay Bhatt</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="inputGenres" class="col-sm-2 control-label">Genres</label>
+            <div class="col-sm-8">
+              <select aria-hidden="true" tabindex="-1" class="form-control select2 genres select2-hidden-accessible" multiple="" data-placeholder="Select genres" style="width: 100%;" autocomplete="off">
+                <option>Alabama</option>
+                <option>Alaska</option>
+                <option>California</option>
+                <option>Delaware</option>
+                <option>Tennessee</option>
+                <option>Texas</option>
+                <option>Washington</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="inputYoutubeEmbedding" class="col-sm-2 control-label">Youtube Embedding</label>
+            <div class="checkbox" >
+              <label>
+                <input type="checkbox" name="youtubeCheckbox" id="youtubeCheckbox" autocomplete="off"> 
+              </label>
+            </div>
+          </div>
+          <div class="form-group youtubeEmbedding">
+            <label for="inputYoutubeURL" class="col-sm-2 control-label">Youtube URL</label>
+            <div class="col-sm-8">
+              <input class="form-control curve-edge" id="inputYoutubeURL" placeholder="Youtube URL" type="text" autocomplete="off">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="inputSeries" class="col-sm-2 control-label">Part of Series</label>
+            <div class="checkbox" >
+              <label>
+                <input type="checkbox" name="seriesCheckbox" id="seriesCheckbox" autocomplete="off"> 
+              </label>
+            </div>
+          </div>
+          <div class="form-group partOfSeries">
+            <label for="inputSeriesTitle" class="col-sm-2 control-label">Series Title</label>
+            <div class="col-sm-8">
+              <select aria-hidden="true" tabindex="-1" class="form-control select2 main-video-title select2-hidden-accessible" multiple="" data-placeholder="Select the series title" style="width: 100%;" autocomplete="off">
+                <option selected="selected">Title 1</option>
+                <option>Title 2</option>
+                <option>Title 3</option>
+                <option>Title 4</option>
+                <option>Title 5</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group partOfSeries">
+            <label for="inputSeriesSeason" class="col-sm-2 control-label">Season</label>
+            <div class="col-sm-8">
+              <input class="form-control curve-edge" id="inputSeriesSeason" type="number" min="1" style="width:10%" autocomplete="off">
+            </div>
+          </div>
+          <div class="form-group partOfSeries">
+            <label for="inputSeriesEpisode" class="col-sm-2 control-label">Episode</label>
+            <div class="col-sm-8">
+              <input class="form-control curve-edge" id="inputSeriesEpisode" type="number" min="1" style="width:10%" autocomplete="off">
+            </div>
+          </div>  
+          <div class="form-group">
+            <label for="inputImdbURL" class="col-sm-2 control-label">IMDB URL</label>
+            <div class="col-sm-8">
+              <input class="form-control curve-edge" id="inputImdbURL" placeholder="Imdb URL" type="text" autocomplete="off">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="inputRottenTomatoesURL" class="col-sm-2 control-label">Rotten Tomatoes URL</label>
+            <div class="col-sm-8 ">
+              <input class="form-control curve-edge" id="inputRottenTomatoesURL" placeholder="Rotten Tomatoes URL" type="text" autocomplete="off">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="inputAgeRestriction" class="col-sm-2 control-label">Age Restriction</label>
+            <div class="col-sm-1">
+              <select aria-hidden="true" tabindex="-1" class="form-control select2 select2-hidden-accessible" style="width:100%" autocomplete="off">
+                <option selected="selected">13+</option>
+                <option>14+</option>
+                <option>15+</option>
+                <option>16+</option>
+                <option>17+</option>
+                <option>18+</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="inputTags" class="col-sm-2 control-label">Tags</label>
+            <div class="col-sm-8">
+              <select aria-hidden="true" tabindex="-1" class="form-control select2 tags select2-hidden-accessible" multiple="" data-placeholder="Separate tags by commas" style="width: 100%;" autocomplete="off">
+                <option>song</option>
+                <option>romantic</option>
+                <option>fun</option>
+                <option>sad</option>
+                <option>comedy</option>
+                <option>romcom</option>
+                <option>laughter</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="inputSocialMediaTags" class="col-sm-2 control-label">Social Media Tags</label>
+            <div class="col-sm-8">
+              <select aria-hidden="true" tabindex="-1" class="form-control select2 tags select2-hidden-accessible" multiple="" data-placeholder="Separate the social media tags by commas" style="width: 100%;" autocomplete="off">
+                <option>song</option>
+                <option>romantic</option>
+                <option>fun</option>
+                <option>sad</option>
+                <option>comedy</option>
+                <option>romcom</option>
+                <option>laughter</option>
+              </select>
+            </div>
+          </div>
+
+        </div><!-- /.box-body -->
+        <div class="box-footer">
+          <button type="submit" class="btn btn-default">Cancel</button>
+          <button type="submit" class="btn btn-info pull-right">Sign in</button>
+        </div><!-- /.box-footer -->
+      </form>
+    </div>
+  	
+  	<% include include/footer %>
+    <script type="text/javascript">
+      $('.select2').select2();
+
+      $('.tags').select2({
+        tags: true,
+        tokenSeparators: [',']
+      });
+
+      $('.artists').select2({
+        tags: true,
+        tokenSeparators: [',']
+      });
+
+      $('.main-video-title').select2({
+        maximumSelectionLength: 1
+      });
+
+      // Show/Hide main video title input according to video type entered
+      $("#main-video-titles").hide();
+      $("#video-type").change( function () {
+        var x = parseInt(document.getElementById("video-type").options.selectedIndex);
+        if(x === 0){
+          $("#main-video-titles").hide();
+          // document.getElementById("#main-video-titles").selectedIndex = 0;
+        }
+        else{
+          $("#main-video-titles").show(); 
+        }
+      });
+
+      // Show/Hide series form part
+      $(".partOfSeries").hide();
+      $('#seriesCheckbox').on('ifChecked',function () {
+          $(".partOfSeries").show();
+      });
+      $('#seriesCheckbox').on('ifUnchecked',function () { 
+          $(".partOfSeries").hide();
+      });
+
+      // Show/Hide youtube embedding form part
+      $(".youtubeEmbedding").hide();
+      $('#youtubeCheckbox').on('ifChecked',function () {
+          $(".youtubeEmbedding").show();
+      });
+      $('#youtubeCheckbox').on('ifUnchecked',function () { 
+          $(".youtubeEmbedding").hide();
+      });
+
+      //Checkbox customization
+      $(document).ready(function(){
+        $('input').iCheck({
+          checkboxClass: 'icheckbox_square-blue'
+          
+        });
+      });
+     
+      
+    </script>
+  </body>
+</html>
