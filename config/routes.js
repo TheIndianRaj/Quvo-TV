@@ -1,15 +1,10 @@
 var express = require('express');
 var app = express();
-var bodyParser = require('body-parser');
-var db = require('./db.js');
-
-
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
-app.use(require('../controllers/addVideo.js'));
-
 
 app.use(require('../controllers/addVideo.js')); //Add Video Route
+
+
+// app.use(require('../controllers/listVideos.js')); //List Video Route
 
 
 
@@ -19,9 +14,9 @@ app.get('/', function(req, res){
 });
 
 
-app.get('/videos', function(req, res){
-	res.render('videos');
-});
+// app.get('/videos', function(req, res){
+// 	res.render('videos');
+// });
 
 
 app.get('/test', function(req, res){
