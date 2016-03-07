@@ -62,6 +62,7 @@ app.route('/videos/add')
 				return key;
 			}
 		});
+<<<<<<< HEAD
 
 		if (!data.hasOwnProperty('youtubeCheckbox')) {
 			data.youtubeUrl = null;
@@ -119,6 +120,45 @@ app.route('/videos/add')
 
 						if (!err){
 							storeId(rows[2][0], 'tag').then(function(){
+=======
+
+		if (data.hasOwnProperty('youtubeCheckbox')) {
+			if(data.youtubeCheckbox !== 'on'){
+				data.youtubeUrl = null;
+			}
+		}
+
+		if (data.hasOwnProperty('seriesCheckbox')) {
+			if(data.seriesCheckbox === 'on'){
+				data.seriesId = null; 
+				data.seriesSeason = null; 
+				data.seriesEpisode = null;
+			}
+		}
+
+		data.artistIds = [];
+		data.tagIds = [];
+		data.socialMediaTagIds = [];
+
+		var flag = {
+			artists : (data.hasOwnProperty('artists')) ? false: true,
+			tags: (data.hasOwnProperty('tags')) ? false: true,
+			socialMediaTags: (data.hasOwnProperty('socialMediaTags')) ? false: true
+		};
+
+
+		if (data.hasOwnProperty('artists') && !_.isEmpty(data.artists)) {
+			if(typeof data.artists === 'string')
+				data.artists = new Array(data.artists);
+			data.artists.forEach(function(artist, key){
+				artist = artist.trim();
+				var isNum = /^\d+$/.test(artist);
+				if(!isNum && !_.isEmpty(artist)){
+					db.query('SET  @artistId= -1; CALL insertArtist("'+artist+'", @artistId); SELECT @artistId;', function(err, rows, fields) {
+
+						if (!err){
+							storeId(rows[2][0], 'artist').then(function(){
+>>>>>>> ebd030156a3b4dc61d2c86dfa1108266fa2a0b54
 								checkInsertVideo();
 							});
 
@@ -129,15 +169,82 @@ app.route('/videos/add')
 					});
 				}
 				else if(isNum){
+<<<<<<< HEAD
 					data.tagIds.push(parseInt(tag));
 					if(data.tags.length === data.tagIds.length){
 						flag.tags = true;
+						checkInsertVideo();
+=======
+					data.artistIds.push(parseInt(artist));
+					if(data.artists.length === data.artistIds.length){
+							flag.artists = true;
+							checkInsertVideo();
+>>>>>>> ebd030156a3b4dc61d2c86dfa1108266fa2a0b54
+					}
+				}
+			});
+		}
+
+<<<<<<< HEAD
+		if (data.hasOwnProperty('socialMediaTags') && !_.isEmpty(data.socialMediaTags)) {
+			if(typeof data.socialMediaTags === 'string')
+				data.socialMediaTags = new Array(data.socialMediaTags);
+			data.socialMediaTags.forEach(function(socialMediaTag, key){
+				socialMediaTag = socialMediaTag.trim();
+				var isNum = /^\d+$/.test(socialMediaTag);
+				if(!isNum && !_.isEmpty(socialMediaTag)){
+					db.query('SET  @socialMediaTagId= -1; CALL insertSocialMediaTag("'+socialMediaTag+'", @socialMediaTagId); SELECT @socialMediaTagId;', function(err, rows, fields) {
+
+						if (!err){
+							storeId(rows[2][0], 'socialMediaTag').then(function(){
+=======
+		if (data.hasOwnProperty('tags') && !_.isEmpty(data.tags)) {
+			if(typeof data.tags === 'string')
+				data.tags = new Array(data.tags);
+			data.tags.forEach(function(tag, key){
+				tag = tag.trim();
+				var isNum = /^\d+$/.test(tag);
+				if(!isNum && !_.isEmpty(tag)){
+					db.query('SET  @tagId= -1; CALL insertTag("'+tag+'", @tagId); SELECT @tagId;', function(err, rows, fields) {
+
+						if (!err){
+							storeId(rows[2][0], 'tag').then(function(){
+>>>>>>> ebd030156a3b4dc61d2c86dfa1108266fa2a0b54
+								checkInsertVideo();
+							});
+
+						}
+						else{
+							console.log(err);
+						}
+					});
+				}
+				else if(isNum){
+<<<<<<< HEAD
+					data.socialMediaTagIds.push(parseInt(socialMediaTag));
+					if(data.socialMediaTags.length === data.socialMediaTagIds.length){
+						flag.socialMediaTags = true;
+=======
+					data.tagIds.push(parseInt(tag));
+					if(data.tags.length === data.tagIds.length){
+						flag.tags = true;
+>>>>>>> ebd030156a3b4dc61d2c86dfa1108266fa2a0b54
 						checkInsertVideo();
 					}
 				}
 			});
 		}
 
+<<<<<<< HEAD
+		function storeId(obj, checkString){
+			return new Promise(function(resolve, reject){
+				var pushed = false;
+				for(var key in obj){
+					if(checkString === 'tag'){
+						data.tagIds.push(obj[key]);
+						if(data.tags.length === data.tagIds.length){
+							flag.tags = true;
+=======
 		if (data.hasOwnProperty('socialMediaTags') && !_.isEmpty(data.socialMediaTags)) {
 			if(typeof data.socialMediaTags === 'string')
 				data.socialMediaTags = new Array(data.socialMediaTags);
@@ -152,10 +259,17 @@ app.route('/videos/add')
 								checkInsertVideo();
 							});
 
+>>>>>>> ebd030156a3b4dc61d2c86dfa1108266fa2a0b54
 						}
-						else{
-							console.log(err);
+						pushed = true;
+					}
+					else if(checkString === 'artist'){
+						data.artistIds.push(obj[key]);
+						if(data.artists.length === data.artistIds.length){
+							flag.artists = true;
 						}
+<<<<<<< HEAD
+=======
 					});
 				}
 				else if(isNum){
@@ -184,6 +298,7 @@ app.route('/videos/add')
 						if(data.artists.length === data.artistIds.length){
 							flag.artists = true;
 						}
+>>>>>>> ebd030156a3b4dc61d2c86dfa1108266fa2a0b54
 						pushed = true;
 					}
 					else if(checkString === 'socialMediaTag'){

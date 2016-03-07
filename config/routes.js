@@ -6,6 +6,7 @@ var db = require('./db.js');
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+app.use(require('../controllers/addVideo.js'));
 
 
 app.use(require('../controllers/addVideo.js')); //Add Video Route
