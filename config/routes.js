@@ -4,7 +4,7 @@ var app = express();
 app.use(require('../controllers/addVideo.js')); //Add Video Route
 
 
-// app.use(require('../controllers/listVideos.js')); //List Video Route
+app.use(require('../controllers/listVideos.js')); //List Video Route
 
 
 

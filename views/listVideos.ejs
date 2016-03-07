@@ -2,6 +2,7 @@
 <html>
   <head>
     <% include include/head %>
+    
   </head>
 
   <body class="hold-transition skin-blue fixed sidebar-mini">
@@ -12,7 +13,7 @@
       <div class="col-xs-12">
         <div class="box">
           <div class="box-header">
-            <h3 class="box-title">Responsive Hover Table</h3>
+            <h3 class="box-title">Videos</h3>
             <div class="box-tools">
               <div class="input-group" style="width: 150px;">
                 <input name="table_search" class="form-control input-sm pull-right" placeholder="Search" type="text">
@@ -25,41 +26,83 @@
           <div class="box-body table-responsive no-padding">
             <table class="table table-hover">
               <tbody><tr>
-                <th>ID</th>
-                <th>User</th>
-                <th>Date</th>
-                <th>Status</th>
-                <th>Reason</th>
+                <th>Sl. No</th>
+                <th>Title</th>
+                <th>Type</th>
+                <th>Uploaded</th>
+                <th>Published</th>
               </tr>
-              <tr>
-                <td>183</td>
-                <td>John Doe</td>
-                <td>11-7-2014</td>
-                <td><span class="label label-success">Approved</span></td>
-                <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-              </tr>
-              <tr>
-                <td>219</td>
-                <td>Alexander Pierce</td>
-                <td>11-7-2014</td>
-                <td><span class="label label-warning">Pending</span></td>
-                <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-              </tr>
-              <tr>
-                <td>657</td>
-                <td>Bob Doe</td>
-                <td>11-7-2014</td>
-                <td><span class="label label-primary">Approved</span></td>
-                <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-              </tr>
-              <tr>
-                <td>175</td>
-                <td>Mike Doe</td>
-                <td>11-7-2014</td>
-                <td><span class="label label-danger">Denied</span></td>
-                <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-              </tr>
+
+              <%
+                var i = 1;
+                
+                videos.forEach(function(video){ %>
+                  
+                  <tr>
+                    <td><%= i++ %></td>
+                    <td><%= video.title %></td>
+                    <%
+                      var currentType = '';
+                      types.forEach(function(type){
+                            if(type.id === video.type){
+                              currentType = type.name;
+                            }
+                        });
+                    %>
+                    <td><%= currentType %></td>
+                    <% if(video.uploaded === 1){ %>
+                      <td><span class="label label-success">Yes</span></td>
+                    <% } else{ %>
+                      <td><span class="label label-danger">No</span></td>
+                    <% } %>
+                    <% if(video.status === 1){ %>
+                      <td><span class="label label-success">Yes</span></td>
+                    <% } else{ %>
+                      <td><span class="label label-danger">No</span></td>
+                    <% } %>
+                    <td><a href="/video/view/<%= video.id %>"><button class="btn btn-xs btn-warning" data-toggle="modal">View</button></a></td>
+                    <td><a href="/video/edit/<%= video.id %>"><button class="btn btn-xs btn-primary" data-toggle="modal">Edit</button></a></td>
+                    <td><a href="/video/delete/<%= video.id %>"><button class="btn btn-xs btn-danger" data-toggle="modal">Delete</button></a></td>
+                  </tr>
+                      <%
+                });
+              %>
             </tbody></table>
+            <div class="row">
+              <div class="col-sm-5">
+                <div aria-live="polite" role="status" id="example2_info" class="dataTables_info">Showing 1 to 10 of 57 entries</div>
+              </div>
+              <div class="col-sm-7">
+                <div id="example2_paginate" class="dataTables_paginate paging_simple_numbers">
+                  <ul class="pagination">
+                    <li id="example2_previous" class="paginate_button previous disabled">
+                      <a tabindex="0" data-dt-idx="0" aria-controls="example2" href="#">Previous</a>
+                    </li>
+                    <li class="paginate_button active">
+                      <a tabindex="0" data-dt-idx="1" aria-controls="example2" href="#">1</a>
+                    </li>
+                    <li class="paginate_button ">
+                      <a tabindex="0" data-dt-idx="2" aria-controls="example2" href="#">2</a>
+                    </li>
+                    <li class="paginate_button ">
+                      <a tabindex="0" data-dt-idx="3" aria-controls="example2" href="#">3</a>
+                    </li>
+                    <li class="paginate_button ">
+                      <a tabindex="0" data-dt-idx="4" aria-controls="example2" href="#">4</a>
+                    </li>
+                    <li class="paginate_button ">
+                      <a tabindex="0" data-dt-idx="5" aria-controls="example2" href="#">5</a>
+                    </li>
+                    <li class="paginate_button ">
+                      <a tabindex="0" data-dt-idx="6" aria-controls="example2" href="#">6</a>
+                    </li>
+                    <li id="example2_next" class="paginate_button next">
+                      <a tabindex="0" data-dt-idx="7" aria-controls="example2" href="#">Next</a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
           </div><!-- /.box-body -->
         </div><!-- /.box -->
       </div>
