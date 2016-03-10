@@ -1,3 +1,9 @@
 .curve-edge{
 	border-radius: 4px;
 }
+
+.video-basic-details{
+	width: 70%;
+	float: left;
+	height: auto;
+}

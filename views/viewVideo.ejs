@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <% include include/head %>
+  </head>
+
+  <body class="hold-transition skin-blue fixed sidebar-mini">
+    
+    <% include include/sidebar %>
+
+    <div style="min-height: 646px;" class="content-wrapper">
+      <div class="box-header">
+        <h3 class="box-title">Video Details</h3>
+        <div class="box-tools">
+          <a class="btn btn-app">
+            <i class="fa fa-edit"></i> Edit
+          </a>
+        </div>
+      </div>
+      <div class="col-md-2">
+              <div class="box box-solid">
+                <div class="box-body">
+                  <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                    <ol class="carousel-indicators" style="bottom: -13px">
+                      <li data-target="#carousel-example-generic" data-slide-to="0" class=""></li>
+                      <li data-target="#carousel-example-generic" data-slide-to="1" class=""></li>
+                      <li data-target="#carousel-example-generic" data-slide-to="2" class="active"></li>
+                    </ol>
+                    <div class="carousel-inner">
+                      <div class="item">
+                        <img src="http://placehold.it/900x500/39CCCC/ffffff&amp;text=I+Love+Bootstrap" alt="First slide">
+                        <div class="carousel-caption">
+                          
+                        </div>
+                      </div>
+                      <div class="item">
+                        <img src="http://placehold.it/900x500/3c8dbc/ffffff&amp;text=I+Love+Bootstrap" alt="Second slide">
+                        <div class="carousel-caption">
+                          
+                        </div>
+                      </div>
+                      <div class="item active">
+                        <img src="http://placehold.it/900x500/f39c12/ffffff&amp;text=I+Love+Bootstrap" alt="Third slide">
+                        <div class="carousel-caption">
+                          
+                        </div>
+                      </div>
+                    </div>
+                    <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+                      <span class="fa fa-angle-left"></span>
+                    </a>
+                    <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
+                      <span class="fa fa-angle-right"></span>
+                    </a>
+                  </div>
+                </div><!-- /.box-body -->
+              </div><!-- /.box -->
+            </div>
+            <div class="video-basic-details">
+              <div>
+                 Title: <%= video.title %></br>
+                 Type: <%= videoTypeName %></br>
+                 Description: <%= video.description %></br>
+                 Published : <%= (video.status === 1)? 'Yes': 'No' %></br>
+                 Uploaded : <%= (video.uploaded === 1)? 'Yes': 'No' %></br>
+                 Duration : <%= video.convertedDuration %></br>
+                 IMDB URL: <%= video.imdb_link %></br>
+                 Rotten Tomatoes URL: <%= video.rotten_tomatoes_link %></br>
+                 <% if(video.youtube_link !== '' || video.youtube_link !== 'null'){ %>
+                  Youtube URL: <%= video.youtube_link %></br>
+                <% } %>
+                Created at : <%= video.created_at %></br>
+                Updated at: <%= video.updated_at %></br>
+                Age Restriction : <%= video.age_restriction %>+</br>
+                Artists : <% for(var key in artists) { %> <%= artists[key].name %>  <% } %></br>
+                Team : <%= team %></br>
+                Genres : <% for(var key in genres) { %> <%= genres[key].name %>  <% } %></br>
+                Tags : <% for(var key in tags) { %> <%= tags[key].name %>  <% } %></br>
+                Social Media Tags : <% for(var key in socialMediaTags) { %> <%= socialMediaTags[key].name %>  <% } %></br>
+                <% if(series){ %>
+                Series Title: <%= series.name%> </br>
+                Season: <%= series.season %> </br>
+                Episode: <%= series.episode %> </br>
+                <%}%>
+              </div>
+            </div>
+
+    </div>
+    <% include include/footer %>
+    <% include include/script %>
+  </body>
+</html>
