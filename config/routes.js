@@ -8,6 +8,8 @@ app.use(require('../controllers/listVideos.js')); //List Videos Route
 
 app.use(require('../controllers/viewVideo.js')); //View Video Route
 
+app.use(require('../controllers/editVideo.js')); //Edit Video Route
+
 
 
 
