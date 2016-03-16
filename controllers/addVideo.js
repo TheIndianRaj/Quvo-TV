@@ -54,7 +54,7 @@ app.route('/videos/add')
 	})
 
 	.post(function(req, res){
-		var fields = ['type', 'title', 'description', 'team', 'artists', 'genres', 'imdbUrl', 'rottenTomatoesUrl', 'ageRestriction', 'tags', 'socialMediaTags', 'youtubeUrl', 'seriesId', 'seriesSeason', 'seriesEpisode'];
+		var fields = ['type', 'title', 'description', 'team', 'artists', 'genres', 'imdbUrl', 'rottenTomatoesUrl', 'ageRestriction', 'tags', 'socialMediaTags', 'youtubeUrl', 'seriesId', 'seriesSeason', 'seriesEpisode', 'mainVideoId'];
 		var db = require('../config/db.js');
 
 		var data = _.pick(req.body, function(value, key, data){
@@ -65,6 +65,10 @@ app.route('/videos/add')
 
 		if (!data.hasOwnProperty('youtubeCheckbox')) {
 			data.youtubeUrl = null;
+		}
+
+		if(data.type === 1){
+			data.mainVideoId = null;
 		}
 
 		data.artistIds = [];
@@ -216,6 +220,7 @@ app.route('/videos/add')
 						'","'+data.imdbUrl+
 						'","'+data.rottenTomatoesUrl+
 						'","'+data.youtubeUrl+
+						'","'+parseInt(data.mainVideoId)+
 						'",@videoId); SELECT @videoId;', function(err, rows, fields) {
 
 						if (!err){
